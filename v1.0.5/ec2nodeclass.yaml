@@ -1,0 +1,16 @@
+apiVersion: karpenter.k8s.aws/v1
+kind: EC2NodeClass
+metadata:
+  name: default
+spec:
+  amiFamily: AL2  # Amazon Linux 2
+  role: "KarpenterNodeRole-eks-test-cl"
+  subnetSelectorTerms:
+    - tags:
+        karpenter.sh/discovery: "eks-test-cl"
+  securityGroupSelectorTerms:
+    - tags:
+        karpenter.sh/discovery: "eks-test-cl"
+  amiSelectorTerms:
+    - tags:
+        karpenter.sh/discovery: "eks-test-cl"
