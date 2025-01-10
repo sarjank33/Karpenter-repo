@@ -7,12 +7,12 @@ spec:
   amiFamily: AL2023  
   amiSelectorTerms:
     - alias: al2023@latest  # This is required in v1
-  role: "KarpenterNodeRole-eks-test-cl"
+  role: "KarpenterNodeRole-<CLUSTER-NAME>"
   subnetSelectorTerms:
     - tags:
-        karpenter.sh/discovery: "eks-test-cl"
+        karpenter.sh/discovery: "<CLUSTER-NAME>"
   securityGroupSelectorTerms:
     - tags:
-        karpenter.sh/discovery: "eks-test-cl"
+        karpenter.sh/discovery: "<CLUSTER-NAME>"
   kubelet:
     clusterDNS: ["10.100.0.10"]  # Required - replace with your cluster DNS IP
