@@ -1,0 +1,9 @@
+NODEGROUP=$(aws eks list-nodegroups --cluster-name ${CLUSTER_NAME} \
+    --query 'nodegroups[0]' --output text)
+
+LAUNCH_TEMPLATE=$(aws eks describe-nodegroup --cluster-name ${CLUSTER_NAME} \
+    --nodegroup-name ${NODEGROUP} --query 'nodegroup.launchTemplate.{id:id,version:version}' \
+    --output text | tr -s "\t" ",")
+
+SECURITY_GROUPS=$(aws eks describe-cluster \
+    --name ${CLUSTER_NAME} --query "cluster.resourcesVpcConfig.clusterSecurityGroupId" --output text)
