@@ -1,4 +1,4 @@
-CLUSTER_NAME= "<your_cluster_name>"
+CLUSTER_NAME="<your_cluster_name>"
 CLUSTER_ENDPOINT="<cluster_endpoint>"
 CLUSTER_REGION="<cluster_region>"
 KARPENTER_VERSION="v0.33.0"
