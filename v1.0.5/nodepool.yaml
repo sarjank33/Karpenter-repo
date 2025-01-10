@@ -2,8 +2,12 @@ apiVersion: karpenter.sh/v1
 kind: NodePool
 metadata:
   name: default
+  namespace: karpenter
 spec:
   template:
+    metadata:
+      labels:
+        intent: default
     spec:
       requirements:
         - key: kubernetes.io/arch
@@ -22,8 +26,13 @@ spec:
         kind: EC2NodeClass
         name: default
         group: karpenter.k8s.aws
+      expireAfter: 720h
   limits:
     cpu: 1000
   disruption:
-    consolidationPolicy: WhenEmptyOrUnderutilized  # Corrected value
+    consolidationPolicy: WhenEmptyOrUnderutilized
     consolidateAfter: 720h
+    budgets:
+      - nodes: "10%"
+        duration: "1h"    # Added duration field
+        schedule: "* * * * *"  # Fixed schedule format
