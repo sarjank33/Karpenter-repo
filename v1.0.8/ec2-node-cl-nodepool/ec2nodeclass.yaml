@@ -1,0 +1,18 @@
+apiVersion: karpenter.k8s.aws/v1
+kind: EC2NodeClass
+metadata:
+  name: default
+  namespace: karpenter
+spec:
+  amiFamily: AL2023  
+  amiSelectorTerms:
+    - alias: al2023@latest  # This is required in v1
+  role: "KarpenterNodeRole-eks-test-cl"
+  subnetSelectorTerms:
+    - tags:
+        karpenter.sh/discovery: "eks-test-cl"
+  securityGroupSelectorTerms:
+    - tags:
+        karpenter.sh/discovery: "eks-test-cl"
+  kubelet:
+    clusterDNS: ["10.100.0.10"]  # Required - replace with your cluster DNS IP
