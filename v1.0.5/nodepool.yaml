@@ -2,7 +2,6 @@ apiVersion: karpenter.sh/v1
 kind: NodePool
 metadata:
   name: default
-  namespace: karpenter
 spec:
   template:
     metadata:
@@ -31,8 +30,8 @@ spec:
     cpu: 1000
   disruption:
     consolidationPolicy: WhenEmptyOrUnderutilized
-    consolidateAfter: 720h
+    consolidateAfter: 30s    # Changed from 720h to 30s
     budgets:
       - nodes: "10%"
-        duration: "1h"    # Added duration field
-        schedule: "* * * * *"  # Fixed schedule format
+        duration: "1h"
+        schedule: "* * * * *"  # Fixed schedule format - runs every minute
