@@ -33,5 +33,5 @@ spec:
     consolidateAfter: 30s
     budgets:
       - nodes: "10%"
-        duration: "1h"    # Added duration field
-        schedule: "0 * * * *"  # Fixed schedule format
+        duration: "1h"    # During this 1-hour window, Karpenter can disrupt up to 10% of nodes
+        schedule: "0 * * * *"  # Karpenter will get a fresh budget to disrupt 10% of nodes at the start of every hour
