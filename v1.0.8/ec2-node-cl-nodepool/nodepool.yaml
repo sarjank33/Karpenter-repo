@@ -30,8 +30,8 @@ spec:
     cpu: 1000
   disruption:
     consolidationPolicy: WhenEmptyOrUnderutilized
-    consolidateAfter: 720h
+    consolidateAfter: 30s
     budgets:
       - nodes: "10%"
         duration: "1h"    # Added duration field
-        schedule: "* * * * *"  # Fixed schedule format
+        schedule: "0 * * * *"  # Fixed schedule format
