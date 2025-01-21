@@ -6,7 +6,7 @@ spec:
   amiFamily: AL2023  
   amiSelectorTerms:
     - alias: al2023@latest
-  role: "KarpenterUnifiedRole-eks-new-kar"
+  role: "KarpenterUnifiedRole-<cluster-name>"
   subnetSelectorTerms:
     - id: subnet-045e019f9a67b9f5d
     - id: subnet-08d4f5d489e1f4946
